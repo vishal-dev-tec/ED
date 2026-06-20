@@ -10,9 +10,8 @@
     :root { --bg: #f0f2f5; --text: #1a1a1a; --glass: rgba(255, 255, 255, 0.4); }
     .dark { --bg: #050505; --text: #f0f0f0; --glass: rgba(255, 255, 255, 0.05); }
 
-    body { font-family: 'DM Sans', sans-serif; background: var(--bg); color: var(--text); transition: 0.5s; overflow-x: hidden; }
+    body { font-family: 'DM Sans', sans-serif; background: var(--bg); color: var(--text); transition: 0.5s; overflow-x: hidden; min-height: 100vh; display: flex; flex-direction: column; }
 
-    /* Liquid Blob */
     .liquid-blob {
         position: fixed; width: 400px; height: 400px;
         background: rgba(128, 128, 128, 0.15);
@@ -24,7 +23,6 @@
         100% { transform: translate(20%, 20%); border-radius: 40% 60% 70% 30%; }
     }
 
-    /* Floating Symbols */
     .floating {
         position: fixed; font-size: 1.5rem; opacity: 0.15;
         pointer-events: none; z-index: 0;
@@ -54,7 +52,8 @@
     }
     .nav-btn.active { background: rgba(0,0,0,0.1); font-weight: bold; }
 
-    .page-section { display: none; opacity: 0; transition: 0.8s; z-index: 10; position: relative; }
+    /* Profile பகுதி முழுமையாகத் தெரிய */
+    .page-section { display: none; opacity: 0; transition: 0.8s; z-index: 10; position: relative; flex-grow: 1; width: 100%; align-items: center; padding-bottom: 50px; }
     .page-section.active { display: flex; opacity: 1; }
   </style>
 </head>
@@ -73,14 +72,14 @@
   <span class="floating" style="top: 85%; right: 25%;">💻</span>
   <span class="floating" style="top: 10%; right: 5%;">தமிழ்</span>
 
-  <nav class="flex justify-center gap-4 p-8 relative z-20">
+  <nav class="flex justify-center gap-4 p-8 relative z-20 flex-wrap">
       <button class="nav-btn active" onclick="showPage('profile', this)">Profile</button>
       <button class="nav-btn" onclick="showPage('env', this)">Environment</button>
       <button class="nav-btn" onclick="showPage('games', this)">Gamehub</button>
       <button class="nav-btn" onclick="document.documentElement.classList.toggle('dark')">🌗</button>
   </nav>
 
-  <section id="profile" class="page-section active flex-col items-center py-10 px-6">
+  <section id="profile" class="page-section active flex-col py-10 px-6">
     <div class="w-20 h-20 glass-extra flex items-center justify-center text-xl font-bold mb-4">V</div>
     <h1 class="text-lg font-bold mb-6 tracking-tight opacity-70">Vishal</h1>
     
@@ -98,15 +97,15 @@
     </div>
   </section>
 
-  <section id="env" class="page-section flex-col items-center py-10 px-6">
+  <section id="env" class="page-section flex-col py-10 px-6">
     <h2 class="text-3xl font-bold mb-8">Tamil Environment</h2>
-    <div class="flex gap-6">
+    <div class="flex gap-6 flex-wrap justify-center">
         <div class="glass-extra w-40 text-center font-bold text-sm">Siddha OS</div>
         <div class="glass-extra w-40 text-center font-bold text-sm">Agathiyan AI</div>
     </div>
   </section>
 
-  <section id="games" class="page-section flex-col items-center py-10 px-6">
+  <section id="games" class="page-section flex-col py-10 px-6">
     <h2 class="text-3xl font-bold mb-8 cyber-font uppercase">Gamehub</h2>
     <div class="glass-extra px-10 text-sm font-medium mono-font">🎮 SYSTEM_GAMING_COLLECTIONS</div>
   </section>
